@@ -1,0 +1,27 @@
+<div class="lg-inner-container panel panel-default" ng-controller="ApplicationsReportController">
+    <div class="inner-form">
+        <h2 class="title">Applications Report</h2>
+        <p>{{ applicationCounts.Applications }} total applications, {{ applicationCounts.Accepted }} accepted applications.</p>
+        <div class="results-table panel panel-default">
+            <table class="table table-striped table-hover" style="verticle-align: middle">
+                <tbody>
+                    <tr id="title-row">
+                        <th>Project Name</th>
+                        <th>Applicants</th>
+                        <th>Acceptance Rate</th>
+                        <th>Top Majors</th>
+                    </tr>
+                    <tr class="result-row" ng-repeat="item in items">
+                        <td>{{ item.ProjectName }}</td>
+                        <td>{{ item.Applicants }}</td>
+                        <td>{{ item.AcceptanceRate }}%</td>
+                        <td>{{ item.TopMajors }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="admin_main">Return to Admin</a>
+        </div>
+    </div>
+</div>

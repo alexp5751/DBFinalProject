@@ -1,0 +1,13 @@
+SELECT t1.ProjectName, t1.Applicants, t1.AcceptanceRate, t2.TopMajors FROM
+(SELECT a.ProjectName, COUNT(*) AS 'Applicants', CONCAT(ROUND(COUNT(CASE WHEN a.Status='Accepted' THEN 1 END) / COUNT(*) * 100, 1), '%') AS 'AcceptanceRate' FROM Application as a
+GROUP BY a.ProjectName) AS t1
+INNER JOIN
+(SELECT a.ProjectName, GROUP_CONCAT(
+    DISTINCT u.Major
+    ORDER BY u.Major ASC
+    SEPARATOR '\n') AS 'TopMajors'
+FROM Application as a
+INNER JOIN User as u ON a.Username = u.Username
+WHERE a.ProjectName IN (SELECT ProjectName FROM Project)
+GROUP BY a.ProjectName) AS t2
+ON t1.ProjectName = t2.ProjectName

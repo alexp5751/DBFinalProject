@@ -1,0 +1,25 @@
+<div class="sm-inner-container panel" ng-controller="MyApplicationsController">
+    <div class="inner-form">
+        <h2 class="title">{{ username }}'s Applications</h2>
+        <div class="detail-info">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>Date</th>
+                        <th>Project Name</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr ng-repeat="application in applications" ng-class="{'table-success': application.Status == 'Accepted','table-warning': application.Status == 'Pending','table-danger': application.Status == 'Rejected'}">
+                        <td>{{ application.Date.split(' ').splice(0, 4).join(' ') }}</td>
+                        <td>{{ application.ProjectName }}</td>
+                        <td ng-class="{'bg-success': application.Status == 'Accepted','bg-warning': application.Status == 'Pending','bg-danger': application.Status == 'Rejected'}">{{ application.Status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="me">Return to {{username}}'s Page</a>
+        </div>
+    </div>
+</div>

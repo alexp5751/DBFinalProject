@@ -1,0 +1,93 @@
+<div class="lg-inner-container panel" ng-controller="AddProjectController">
+    <form class="inner-form" form="addProjectForm" ng-submit="create(project)" novalidate>
+        <h2 class="title">Create a Project</h2>
+        <div class="edit-profile-info">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Project Name</b></td>
+                        <td class="detail-value">
+                            <input class="form-control" placeholder="Project Name" type="text" name="projectName" ng-model="project.ProjectName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Advisor Name</b></td>
+                        <td class="detail-value">
+                            <input class="form-control" placeholder="Advisor Name" type="text" name="advisorName" ng-model="project.AdvisorName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Advisor Email</b></td>
+                        <td class="detail-value">
+                            <input class="form-control" placeholder="Advisor Email" type="text" name="advisorEmail" ng-model="project.AdvisorEmail" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Description</b></td>
+                        <td class="detail-value">
+                            <input class="form-control" placeholder="Description" type="text" name="description" ng-model="project.Description" />
+                        </td>
+                    </tr>
+                    <tr ng-repeat="categoryOption in categoryOptions">
+                        <td class="param"><b>{{categoryOption.name}}</b></td>
+                        <td>
+                            <select class="form-control" ng-model="project.categories[categoryOption.index]">
+                                <option ng-repeat="category in categories">{{category.CategoryName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="button" class="full-width btn btn-default" ng-click="addCategory()">Add Category</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Designation</b></td>
+                        <td>
+                            <select class="form-control" ng-model="project.Designation">
+                                <option ng-repeat="designation in designations">{{designation.Name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Number of Students</b></td>
+                        <td class="detail-value">
+                            <input class="form-control" placeholder="Number of Students" type="number" name="description" ng-model="project.EstNumStudents" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Major Requirement</b></td>
+                        <td>
+                            <select class="form-control" ng-model="project.Major">
+                                <option ng-repeat="major in majors">{{major.MajorName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Year Requirement</b></td>
+                        <td>
+                            <select class="form-control" ng-model="project.Year">
+                                <option ng-repeat="year in years">{{year}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Department Requirement</b></td>
+                        <td>
+                            <select class="form-control" ng-model="project.Department">
+                                <option ng-repeat="department in departments">{{department.DeptName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p ng-show="message" class="{{ messageClass }}" style="margin-top: 10px">{{ message }}</p>
+            <button class="btn btn-success full-width" type="submit">Create Project</button>
+            <button type="button" class="search-btn full-width btn btn-danger" ng-click="reset()">Reset Form</button>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="admin_main">Return to Admin</a>
+        </div>
+    </form>
+</div>

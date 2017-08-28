@@ -1,0 +1,198 @@
+body {
+    background: url(/images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#view {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-height: 100%;
+    width: 800px;
+    display: flex;
+    align-items: center;
+}
+
+.sm-inner-container {
+    margin: 0 auto;
+    width: 60%;
+    position: relative;
+}
+
+.lg-inner-container {
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.inner-form {
+    margin: 20px;
+    position: relative;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.return-link-container {
+    display: flex;
+    align-items: center;
+}
+
+.return-link {
+    max-width: 100%;
+    margin: 10px auto 0 auto;
+}
+
+.alert {
+    margin-bottom: 10px;
+    padding: 6px 12px;
+}
+
+.text-success {
+    color: #3c763d;
+}
+
+.text-error {
+    color: #a94442;
+}
+
+.text-warning {
+    color: #8a6d3b;
+}
+
+.validators {
+    max-height: 44px;
+    overflow-y: hidden;
+}
+
+.title {}
+
+.me-container {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+.me-container i {
+    font-size: 26px;
+}
+
+.me-button {
+    color: #337ab7;
+    background: white;
+    border: 1px solid #dddddd;
+}
+
+.me-button:hover, .me-button:focus {
+    color: #23527c;
+    text-decoration: none;
+}
+
+.username-text {
+    margin-top: 5px;
+    margin-right: 8px;
+    float: left;
+}
+
+.results-table {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.results-table table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#title-row {
+    background-color: #d3d3d3;
+}
+
+.result-row {
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+.results-table>.table-hover>tbody>tr:hover {
+    background-color: #d3d3d3;
+}
+
+.detail-key {
+    text-align: right;
+}
+
+.detail-info table {
+    margin-bottom: 0;
+}
+
+.detail-value-list p {
+    margin: 0;
+}
+
+.stack, .edit-profile-button {
+    margin-bottom: 10px;
+}
+
+.table > tbody > tr > .detail-key-edit  {
+    vertical-align: middle;
+}
+
+.profile-field {
+    margin-bottom: 0;
+}
+
+.apply-button {
+  margin-top: 10px;
+}
+
+.apply-success {
+    margin-top: 10px;
+}
+
+.already-applied {
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+hr {
+    margin: 0;
+    border-color: #ddd;
+}
+
+table .form-control {
+    margin: 0;
+}
+
+.param {
+    text-align: right;
+    vertical-align: middle !important;
+}
+
+.params {
+    margin-bottom: 10px;
+}
+
+.search-btn {
+    margin-top: 10px;
+}

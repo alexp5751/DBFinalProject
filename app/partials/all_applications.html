@@ -1,0 +1,31 @@
+<div class="lg-inner-container panel panel-default" ng-controller="AllApplicationsController">
+    <div class="inner-form">
+        <h2 class="title">All Applications</h2>
+        <div class="results-table panel panel-default">
+            <table class="table table-striped table-hover" style="verticle-align: middle">
+                <tbody>
+                    <tr id="title-row">
+                        <th>Project Name</th>
+                        <th>Student Major</th>
+                        <th>Student Year</th>
+                        <th>Status</th>
+                        <th>Operations</th>
+                    </tr>
+                    <tr ng-click="allowFeedback(item)" class="result-row" ng-repeat="item in items">
+                        <td ng-click="allowFeedback(item)">{{ item.ProjectName }}</td>
+                        <td>{{ item.Major }}</td>
+                        <td>{{ item.Year }}</td>
+                        <td ng-class="{'bg-success': item.Status == 'Accepted','bg-warning': item.Status == 'Pending','bg-danger': item.Status == 'Rejected'}">{{ item.Status }}</td>
+                        <td>
+                            <button ng-click="accept(item)" ng-show="item.Status=='Pending'" class="btn btn-success full-width" style="margin-bottom: 5px">Accept</button>
+                            <button ng-click="reject(item)" ng-show="item.Status=='Pending'" class="btn btn-danger full-width">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="admin_main">Return to Admin</a>
+        </div>
+    </div>
+</div>

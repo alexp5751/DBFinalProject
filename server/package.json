@@ -1,0 +1,21 @@
+{
+  "name": "team78_phase3",
+  "version": "1.0.0",
+  "description": "Phase 3 of the CS 4400 database project.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.gatech.edu/apoole32/Team78_Phase3.git"
+  },
+  "author": "Alex Poole",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mysql": "^2.12.0"
+  }
+}

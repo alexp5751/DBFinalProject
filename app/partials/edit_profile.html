@@ -1,0 +1,41 @@
+<div class="sm-inner-container panel" ng-controller="EditProfileController">
+    <form class="inner-form" form="editProfileForm" ng-submit="editProfile()" novalidate>
+        <h2 class="title">Edit {{ username }}'s Profile</h2>
+        <div class="edit-profile-info">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Major</b></td>
+                        <td class="detail-value">
+                            <select class="profile-field form-control" selected="{{ user.Major }}" ng-model="user.Major" ng-change="updateDept()">
+                                <option ng-repeat="major in majors">{{ major.MajorName }}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key detail-key-edit"><b>Year</b></td>
+                        <td class="detail-value">
+                            <select class="profile-field form-control" selected="{{ user.Year }}" ng-model="user.Year">
+                                <option>Freshman</option>
+                                <option>Sophomore</option>
+                                <option>Junior</option>
+                                <option>Senior</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Department</b></td>
+                        <td class="detail-value">
+                            {{ department.DeptName }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-default full-width" type="submit">Edit Profile</button>
+            <p ng-show="message" class="{{ messageClass }}" style="margin-top: 10px">{{ message }}</p>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="me">Return to {{username}}'s Page</a>
+        </div>
+    </form>
+</div>

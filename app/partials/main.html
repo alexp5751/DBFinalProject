@@ -1,0 +1,95 @@
+<div class="lg-inner-container panel panel-default" ng-controller="MainController">
+    <form class="inner-form" name="searchForm" ng-submit="search(params)" autocomplete="new-password" novalidate>
+        <h2 class="title">Main Page</h2>
+        <div class="me-container">
+            <a class="btn me-button btn-default" ui-sref="me">
+                <div class="username-text">{{ username }}</div>
+                <i class="glyphicon glyphicon-user"></i>
+            </a>
+        </div>
+        <div class="params panel panel-default">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="param"><b>Title</b></td>
+                        <td>
+                            <input class="form-control" placeholder="Title" type="text" name="title" ng-model="params.title" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Designation</b></td>
+                        <td>
+                            <select class="form-control" ng-model="params.designation" ng-trim="true">
+                                <option ng-repeat="designation in designations">{{designation.Name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Major</b></td>
+                        <td>
+                            <select class="form-control" ng-model="params.major">
+                                <option ng-repeat="major in majors">{{major.MajorName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="param"><b>Year</b></td>
+                        <td>
+                            <select class="form-control" ng-model="params.year">
+                                <option ng-repeat="year in years">{{year}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="categoryOption in categoryOptions">
+                        <td class="param"><b>{{categoryOption.name}}</b></td>
+                        <td>
+                            <select class="form-control" ng-model="params.categories[categoryOption.index]">
+                                <option ng-repeat="category in categories">{{category.CategoryName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" class="full-width btn btn-default" ng-click="addCategory()">Add Category</button>
+            </div>
+            <div class="col-xs-6">
+                <button type="button" class="full-width btn btn-default" ng-click="removeCategory()">Remove Category</button>
+            </div>
+            <div class="col-xs-6">
+                <div class="checkbox" style="text-align: center">
+                    <label><input type="checkbox" value="checked" ng-model="params.projects_only" checked>Projects</label>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="checkbox" style="text-align: center">
+                    <label><input type="checkbox" value="checked" ng-model="params.courses_only" checked>Courses</label>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <button type="submit" class="search-btn full-width btn btn-success">Search</button>
+            </div>
+            <div class="col-xs-6">
+                <button type="button" class="search-btn full-width btn btn-danger" ng-click="reset()">Reset</button>
+            </div>
+        </div>
+        <div class="results-table panel panel-default">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <tr id="title-row">
+                        <th>Name</th>
+                        <th>Type</th>
+                    </tr>
+                    <tr class="result-row" ng-repeat="item in items" ng-switch="item.Type">
+                        <td class="result-name" ng-switch-when="Project" ui-sref="project({ projectName: item.Name })">{{ item.Name }}</td>
+                        <td class="result-name" ng-switch-when="Course" ui-sref="course({ courseName: item.Name })">{{ item.Name }}</td>
+                        <td class="result-type" ng-switch-when="Project" ui-sref="project({ projectName: item.Name })">{{ item.Type }}</td>
+                        <td class="result-type" ng-switch-when="Course" ui-sref="course({ courseName: item.Name })">{{ item.Type }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

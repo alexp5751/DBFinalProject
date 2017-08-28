@@ -1,0 +1,58 @@
+<div class="sm-inner-container panel" ng-controller="ProjectDetailsController">
+    <div class="inner-form">
+        <h2 class="title">{{ project.ProjectName }}</h2>
+        <div class="detail-info">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="detail-key"><b>Advisor</b></td>
+                        <td class="detail-value">{{ project.AdvisorName }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Advisor Email</b></td>
+                        <td class="detail-value">{{ project.AdvisorEmail }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Description</b></td>
+                        <td class="detail-value">{{ project.Description }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Designation</b></td>
+                        <td class="detail-value">{{ project.Designation }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Categories</b></td>
+                        <td class="detail-value-list">
+                            <p ng-repeat="category in project.Categories">{{ category.CategoryName }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Requirements</b></td>
+                        <td class="detail-value-list">
+                            <p ng-repeat="requirement in project.Requirements">{{ requirement.Requirement }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Students</b></td>
+                        <td class="detail-value">{{ project.EstNumStudents }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-hide="alreadyApplied || undeclared">
+            <button ng-hide="applyButtonHide" class="btn btn-default full-width apply-button" ng-click="apply()">Apply For Project</button>
+            <p ng-show="successMessage" class="{{ 'apply-success ' + successClass }}">{{ successMessage }}</p>
+        </div>
+        <div ng-show="alreadyApplied">
+            <p class="already-applied alert alert-info">You have already applied for this project.</p>
+            <p class="already-applied alert" ng-class="{'alert-success': status == 'Accepted', 'alert-warning': status == 'Pending', 'alert-danger': status == 'Rejected'}">Application Status: {{ status }}</p>
+        </div>
+        <div ng-show="undeclared">
+            <p class="already-applied alert alert-info">You must declare a major and a year before applying to projects.</p>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="main">Return to Main</a>
+        </div>
+    </div>
+</div>

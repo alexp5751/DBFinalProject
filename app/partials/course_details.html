@@ -1,0 +1,36 @@
+<div class="sm-inner-container panel" ng-controller="CourseDetailsController">
+    <div class="inner-form">
+        <h2 class="title">{{ course.CourseNumber }}</h2>
+        <div class="detail-info">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="detail-key"><b>Course Name</b></td>
+                        <td class="detail-value">{{ course.CourseName }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Instructor</b></td>
+                        <td class="detail-value">{{ course.Instructor }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Designation</b></td>
+                        <td class="detail-value">{{ course.Designation }}</td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Categories</b></td>
+                        <td class="detail-value-list">
+                            <p ng-repeat="category in course.Categories">{{ category.CategoryName }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="detail-key"><b>Students</b></td>
+                        <td class="detail-value">{{ course.EstNumStudents }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="main">Return to Main</a>
+        </div>
+    </div>
+</div>

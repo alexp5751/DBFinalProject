@@ -1,0 +1,40 @@
+<div class="sm-inner-container panel" ng-controller="RegisterController">
+    <form class="inner-form" name="registerForm" ng-submit="register(credentials)" novalidate>
+        <h2 class="title">New User Registration</h2>
+        <p ng-show="successMessage" class="{{ successClass }}">{{ successMessage }}</p>
+        <div class="validators">
+            <p class="alert alert-success" ng-show="registerForm.username.$valid">Username available!</p>
+            <p class="alert alert-warning" ng-show="registerForm.username.$pending.uniqueUsername">Checking username availability...</p>
+            <p class="alert alert-danger" ng-show="registerForm.username.$error.uniqueUsername">This username is already taken.</p>
+            <p class="alert alert-danger" ng-show="registerForm.username.$error.maxlength">Usernames must be 20 characters or less.</p>
+            <p class="alert alert-danger" ng-show="registerForm.username.$touched && registerForm.username.$error.required">Username is required.</p>
+        </div>
+        <input class="form-control" placeholder="Username" type="text" name="username" ng-model="credentials.username"
+            ng-maxlength="20" unique-username ng-required="true"/>
+        <div class="validators">
+            <p class="alert alert-success" ng-show="registerForm.gt_email.$valid">GT email address available!</p>
+            <p class="alert alert-warning" ng-show="registerForm.gt_email.$pending.uniqueEmail">Checking GT email address availability...</p>
+            <p class="alert alert-danger" ng-show="registerForm.gt_email.$error.uniqueEmail">This GT email address is already in use.</p>
+            <p class="alert alert-danger" ng-show="registerForm.gt_email.$touched && registerForm.gt_email.$error.email">This is not a valid email address.</p>
+            <p class="alert alert-danger" ng-show="registerForm.gt_email.$touched && registerForm.gt_email.$error.required">GT email address is required.</p>
+        </div>
+        <input class="form-control" placeholder="GT Email Address" type="email" name="gt_email" ng-model="credentials.gtEmail"
+            unique-email ng-required="true">
+        <div class="validators">
+            <p class="alert alert-danger" ng-show="registerForm.password.$error.maxlength">Passwords must be 15 characters or less.</p>
+            <p class="alert alert-danger" ng-show="registerForm.password.$touched && registerForm.password.$error.required">Password is required.</p>
+        </div>
+        <input class="form-control" placeholder="Password" type="password" name="password" ng-model="credentials.password"
+            ng-maxlength="15" ng-required="true"/>
+        <div class="validators">
+            <p class="alert alert-danger" ng-show="registerForm.confirm_password.$touched && registerForm.confirm_password.$error.required">Confirm password is required.</p>
+            <p class="alert alert-danger" ng-show="registerForm.confirm_password.$touched && registerForm.confirm_password.$error.compareTo">The two password fields must match.</p>
+        </div>
+        <input class="form-control" placeholder="Confirm Password" type="password" name="confirm_password" ng-model="credentials.confirmPassword"
+            ng-disabled="!registerForm.password.$valid" compare-to="credentials.password" ng-required="true">
+        <button class="btn full-width" type="submit" ng-disabled="!registerForm.$valid">Register</button>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="login">Already have an account? Click here.</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="sm-inner-container panel" ng-controller="LoginController">
+    <form class="inner-form" name="loginForm" ng-submit="login(credentials)" autocomplete="new-password" novalidate>
+        <h2 class="title">Log In</h2>
+        <p ng-show="authMessage" class="{{ authClass }}">{{ authMessage }}</p>
+        <div class="validators">
+            <p class="alert alert-danger" ng-show="loginForm.username.$touched && loginForm.username.$error.required">Username is required.</p>
+        </div>
+        <input class="form-control" placeholder="Username" type="text" name="username" ng-model="credentials.username" ng-required="true" />
+        <div class="validators">
+            <p class="alert alert-danger" ng-show="loginForm.password.$touched && loginForm.password.$error.required">Password is required.</p>
+        </div>
+        <input class="form-control" placeholder="Password" type="password" name="password" ng-model="credentials.password" ng-required="true" />
+        <button class="btn full-width" type="submit" ng-disabled="pending || !loginForm.$valid">Login</button>
+        <div class="return-link-container">
+            <a class="return-link" ui-sref="register">New here? Click here to create a new account.</a>
+        </div>
+    </form>
+</div>
